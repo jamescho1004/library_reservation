@@ -5,8 +5,22 @@ const router = Router();
 
 router.get("/", async (req, res) => {
     try {
-        const seats = await Seat.find().sort({zone: 1, number: 1});
+        const { zone } = req.query;
+        const filter = zone ? { zone } : {}; 
+        const seats = await Seat.find(filter).sort({zone: 1, number: 1});
         res.json(seats);
+    }
+    catch (err) {
+        res.status(500).json({ error: "Failed to fetch seats" });
+    }
+})
+
+router.get("/:zone/:number", async (req, res) => {
+    try {
+        const { zone, number } = req.params;
+        const seat = await Seat.findOne({ zone, number: Number(number)});
+        if(!seat) res.status(404).json({ error: "seat not found!" });
+        res.json(seat);
     }
     catch (err) {
         res.status(500).json({ error: "Failed to fetch seats" });
