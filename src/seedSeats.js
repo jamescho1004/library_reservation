@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
-import Seat from "./models/seats.js";
+import Seat from "./models/Seat.js";
 
 
 async function seed() {
