@@ -1,4 +1,4 @@
-// db 초기화
+// db 좌석 초기화
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
