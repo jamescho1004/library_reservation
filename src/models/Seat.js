@@ -11,7 +11,7 @@ const seatSchema = new mongoose.Schema(
         required: true
     }
     },
-    {timestamp: true}
+    {timestamps: true}
 )
 
 seatSchema.index({ zone: 1, number: 1 }, { unique: true });

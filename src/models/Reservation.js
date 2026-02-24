@@ -4,7 +4,7 @@ const reservationSchema = new mongoose.Schema(
     {
     seat: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "seat",
+        ref: "Seat",
         required: true
     },
     startTime: {
@@ -16,7 +16,7 @@ const reservationSchema = new mongoose.Schema(
         required: true
     },
     },
-    {timestamp: true}
+    {timestamps: true}
 );
 
 export default mongoose.model("Reservation", reservationSchema);
