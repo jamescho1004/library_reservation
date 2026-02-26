@@ -16,16 +16,19 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/api/seats", seatsRouter);
 app.use("/api/reservations", reservationsRouter);
 
-app.get("/", (req, res) => {
-    res.render("index");
-})
-
 connectDB();
 
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+app.get("/reserve", (req, res) => {
+  res.render("reserve");
+});
+
 app.listen(3000, () => {
-    console.log("server connected!");
-})
+  console.log("server connected!");
+});

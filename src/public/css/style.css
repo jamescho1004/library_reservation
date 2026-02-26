@@ -1,3 +1,54 @@
+:root {
+  --brand-bg: #fef6f1;
+  --brand-brown: #604030;
+  --brand-green: #586858;
+  --brand-gold: #e0a868;
+
+  --bs-body-bg: var(--brand-bg);
+  --bs-body-color: var(--brand-brown);
+}
+
+.navbar {
+  background: var(--brand-bg) !important;
+  border-bottom: 1px solid rgba(96, 64, 48, 0.12);
+}
+.navbar a {
+  color: var(--brand-brown) !important;
+}
+.navbar a:hover {
+  color: var(--brand-green);
+  background: var(--brand-bg);
+}
+
+.btn-primary {
+  background: var(--brand-green);
+  color: var(--brand-bg);
+  border-color: var(--brand-green);
+}
+.btn-primary:hover,
+.btn-primary:active {
+  background: var(--brand-gold) !important;
+  color: var(--brand-bg) !important;
+  border-color: var(--brand-gold) !important;
+}
+
 .seat-box {
   width: 10%;
+  transition: 0.15s;
+}
+.seat-box:hover {
+  transform: translateY(-2px);
+  transition: 0.15s;
+}
+.seat-available {
+  background: var(--brand-green);
+  color: var(--brand-bg);
+}
+.seat-unavailable {
+  background: var(--brand-brown);
+  color: var(--brand-bg);
+}
+.seat-unknown {
+  background: gray;
+  color: var(--brand-bg);
 }

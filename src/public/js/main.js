@@ -28,8 +28,8 @@ function toISO(date, time) {
 }
 
 function seatBgClass(available) {
-  if (available == null) return "bg-secondary";
-  return available ? "bg-success" : "bg-danger";
+  if (available == null) return "seat-unknown";
+  return available ? "seat-available" : "seat-unavailable";
 }
 
 function renderSeats(seats) {
