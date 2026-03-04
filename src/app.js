@@ -29,6 +29,10 @@ app.get("/reserve", (req, res) => {
   res.render("reserve");
 });
 
+app.get("/reservation", (req, res) => {
+  res.render("reservation");
+});
+
 app.listen(3000, () => {
   console.log("server connected!");
 });

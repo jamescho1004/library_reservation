@@ -32,6 +32,28 @@ function seatBgClass(available) {
   return available ? "seat-available" : "seat-unavailable";
 }
 
+let selectedSeat = null;
+
+function selectSeat(div) {
+  document.querySelectorAll(".seat-selected").forEach((el) => {
+    el.classList.remove("seat-selected");
+  });
+
+  div.classList.add("seat-selected");
+
+  selectedSeat = {
+    seatId: div.dataset.seatId,
+    zone: div.dataset.zone,
+    number: div.dataset.number,
+  };
+
+  const info = document.getElementById("selectedInfo");
+  if (info) info.textContent = `${div.dataset.zone}-${div.dataset.number}`;
+
+  const goBtn = document.getElementById("goBtn");
+  if (goBtn) goBtn.disabled = false;
+}
+
 function renderSeats(seats) {
   seatWrap.innerHTML = "";
 
@@ -58,8 +80,15 @@ function renderSeats(seats) {
       .sort((a, b) => a.number - b.number)
       .forEach((seat) => {
         const div = document.createElement("div");
-        div.className = `seat-box p-2 text-center border rounded text-white ${seatBgClass(seat.available)}`;
+        div.className = `seat-box p-2 text-center border rounded ${seatBgClass(seat.available)}`;
         div.textContent = seat.number;
+        div.dataset.seatId = seat._id;
+        div.dataset.zone = seat.zone;
+        div.dataset.number = seat.number;
+
+        if (seat.available === true) {
+          div.addEventListener("click", () => selectSeat(div));
+        }
 
         grid.appendChild(div);
       });
@@ -93,6 +122,13 @@ async function loadStatus() {
   const startTime = startEl.value;
   const endTime = endEl.value;
 
+  selectedSeat = null;
+
+  const info = document.getElementById("selectedInfo");
+  if (info) info.textContent = "Select your seat";
+  const goBtn = document.getElementById("goBtn");
+  if (goBtn) goBtn.disabled = true;
+
   if (!date) return alert("Please select date");
   if (!startTime || !endTime) return alert("Please select time");
   if (startTime >= endTime)
@@ -124,6 +160,21 @@ window.addEventListener("DOMContentLoaded", () => {
   endEl.value = "12:00";
 
   loadInitialSeats();
+
+  document.getElementById("goBtn").addEventListener("click", () => {
+    if (!selectedSeat) return;
+
+    const qs = new URLSearchParams({
+      seatId: selectedSeat.seatId,
+      zone: selectedSeat.zone,
+      number: selectedSeat.number,
+      date: dateEl.value,
+      startTime: startEl.value,
+      endTime: endEl.value,
+    });
+
+    location.href = `/reservation?${qs.toString()}`;
+  });
 });
 
 loadBtn.addEventListener("click", loadStatus);

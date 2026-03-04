@@ -31,9 +31,17 @@
   color: var(--brand-bg) !important;
   border-color: var(--brand-gold) !important;
 }
+.btn-primary:disabled {
+  background: gray;
+  border-color: gray;
+  color: var(--brand-bg);
+  opacity: 1;
+  cursor: not-allowed !important;
+}
 
 .seat-box {
   width: 10%;
+  position: relative;
   transition: 0.15s;
 }
 .seat-box:hover {
@@ -51,4 +59,8 @@
 .seat-unknown {
   background: gray;
   color: var(--brand-bg);
+}
+.seat-selected {
+  box-shadow: 0 0 0 3px var(--brand-gold);
+  z-index: 2;
 }
