@@ -30,7 +30,11 @@ app.get("/reserve", (req, res) => {
 });
 
 app.get("/reservation", (req, res) => {
-  res.render("reservation");
+  res.render("reservation", { q: req.query });
+});
+
+app.get("/confirm", (req, res) => {
+  res.render("confirm", { q: req.query });
 });
 
 app.listen(3000, () => {

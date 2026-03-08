@@ -39,6 +39,12 @@
   cursor: not-allowed !important;
 }
 
+.btn-outline-secondary {
+  background: var(--brand-bg);
+  color: var(--brand-brown);
+  border-color: var(--brand-brown);
+}
+
 .seat-box {
   width: 10%;
   position: relative;
