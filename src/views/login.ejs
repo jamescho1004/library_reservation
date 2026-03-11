@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <%- include("partials/header") %>
+  </head>
+  <body>
+    <%- include("partials/navbar") %>
+
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <h1 class="card-header">Login</h1>
+            <div class="card-body">
+              <div id="formError" class="text-error d-none mb-3"></div>
+
+              <form id="loginForm" novalidate>
+                <div class="mb-3">
+                  <label for="userId" class="form-label">ID</label>
+                  <input id="userId" type="text" class="form-control" />
+                  <div class="invalid-feedback" id="userIdError"></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input id="password" type="password" class="form-control" />
+                  <div class="invalid-feedback" id="passwordError"></div>
+                </div>
+
+                <button id="loginBtn" class="btn btn-primary w-100">
+                  Login
+                </button>
+              </form>
+
+              <div class="text-center mt-3">
+                <a href="/register" class="register-link"
+                  >Don't have an account? Register</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include("partials/footer") %>
+    <script src="/js/login.js"></script>
+  </body>
+</html>

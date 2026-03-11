@@ -43,13 +43,23 @@
           </ul>
         </li>
       </ul>
+      
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <li>
-          <a class="nav-link" href="#">Log in</a>
+        <% if (currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/myPage">Hello, <%= currentUser.name %></a>
         </li>
-        <li>
-          <a class="nav-link" href="#">Register</a>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtn" href="#">Logout</a>
         </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </div>

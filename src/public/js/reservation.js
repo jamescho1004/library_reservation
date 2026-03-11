@@ -6,10 +6,11 @@ function toISO(date, time) {
 window.addEventListener("DOMContentLoaded", () => {
   const q = window.__RES_Q__;
   const btn = document.getElementById("confirmBtn");
-  const msg = document.getElementById("msg");
+  const formError = document.getElementById("formError");
 
   btn.addEventListener("click", async () => {
-    msg.textContent = "";
+    formError.textContent = "";
+    formError.classList.add("d-none");
     btn.disabled = true;
 
     try {
@@ -28,7 +29,8 @@ window.addEventListener("DOMContentLoaded", () => {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        msg.textContent = data.error || "Reservation failed";
+        formError.textContent = data.error || "Reservation failed";
+        formError.classList.remove("d-none");
         btn.disabled = false;
         return;
       }
@@ -42,7 +44,8 @@ window.addEventListener("DOMContentLoaded", () => {
       });
       location.href = `/confirm?${qs.toString()}`;
     } catch (e) {
-      msg.textContent = "A network error occurred";
+      formError.textContent = "A network error occurred";
+      formError.classList.remove("d-none");
       btn.disabled = false;
     }
   });

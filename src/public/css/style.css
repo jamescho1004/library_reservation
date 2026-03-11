@@ -70,3 +70,38 @@
   box-shadow: 0 0 0 3px var(--brand-gold);
   z-index: 2;
 }
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-brown);
+  box-shadow: 0 0 0 0.1rem rgba(96, 64, 48, 0.1);
+  outline: none;
+}
+
+.text-error {
+  color: var(--brand-gold);
+}
+.is-invalid {
+  border-color: var(--brand-gold) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23d4af37'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23d4af37' stroke='none'/%3e%3c/svg%3e") !important;
+}
+.is-invalid:focus {
+  border-color: var(--brand-gold) !important;
+  box-shadow: 0 0 0 0.1rem rgba(224, 168, 104, 0.1) !important;
+  outline: none;
+}
+
+.invalid-feedback {
+  color: var(--brand-gold);
+}
+
+.register-link {
+  color: var(--brand-brown);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.register-link:hover {
+  opacity: 1;
+}
